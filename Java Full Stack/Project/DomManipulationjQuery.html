@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="myDiv">
+
+    </div>
+    <p id="myInput" disabled="false"> Paragraph </p>
+    <input type="text" value="" id="input">
+
+    <h3 class="default">// Dom Manipulation</h3>
+    <h2>Dynamic Content</h2>
+
+    <ul id="item-list">
+        <li>item 1</li>
+        <li>item 2</li>
+    </ul>
+    <p id="status-message">Ready</p>
+    
+    <img src="no-img.jpg" alt="Placeholder Image">    
+    
+    <script>
+        $(document).ready(function() {
+            $('#myDiv').text("This is div text!");
+            var val = $('#myDiv').text();
+
+            console.log(val);
+
+            // $('#myInput').html('This is <h3>Heading</h3>');
+
+            $('#input').attr('value' ,'P-Calculated');
+            $('#myDiv').css('background-color', 'blue');
+            // console.log($('input').val());
+
+            $('#input').prop('disabled', true);
+
+
+            $('h2').text('Updated Content');
+            $('#item-list').append('<li>New Dynamic Item</li>');
+            $('img').attr('alt', 'Main Application Image');
+            $('#status-message').addClass('important');
+            $('.important').css('color', 'red');
+            $('#item-list > li').eq(1).remove();
+            $('img').replaceWith('<p>Image Removed</p>');
+
+        });
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- 
+</code>, <code><select></code>, and <code><button></code> elements.</li><li><strong>:text, :password, :checkbox, :radio, :submit, :reset, :button, :file</strong>: Selects specific input types.</li><li><strong>:enabled, :disabled</strong>: Selects form elements based on their enabled/disabled state.</li><li><strong>:checked</strong>: Selects checked radio buttons or checkboxes.</li><li><strong>:selected</strong>: Selects the selected option in a select list.</li></ul><pre><code class='language-js'>// Select all text input fields
+var textInputs = $(':text');
+
+// Select all disabled form elements
+var disabledFields = $(':disabled');
+
+// Select all checked checkboxes
+var checkedBoxes = $(':checkbox:checked');</code></pre><p><strong>Activity: Using jQuery Selectors</strong></p><p>Let's put these selectors into practice. Imagine you have the following HTML:</p><pre><code class='language-html'><div id='container'>
+    <h2>Section 1</h2>
+    <p class='content highlight'>This is the first paragraph.</p>
+    <p class='content'>This is the second paragraph.</p>
+    <ul>
+        <li>Item 1</li>
+        <li class='highlight'>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <input type='text' name='username' value='JohnDoe' />
+    <button>Submit</button>
+</div></code></pre><p>Now, using jQuery within your <code>$(document).ready()</code> function, try to:</p><ol><li>Select the <code>div</code> with the ID 'container' and change its background color to light gray.</li><li>Select all elements with the class 'highlight' and change their text color to blue.</li><li>Select the second paragraph (which has no class) and make its font weight bold.</li><li>Select all list items and add a border to them.</li><li>Select the input field with the name 'username' and set its value to 'Guest'.</li></ol><p>Your JavaScript code might look something like this:</p><pre><code class='language-js'>$(document).ready(function() {
+    // 1. Select the div and change background
+    $('#container').css('background-color', 'lightgray');
+
+    // 2. Select highlighted elements and change text color
+    $('.highlight').css('color', 'blue');
+
+    // 3. Select the second paragraph and make it bold
+    // We can use :nth-child(2) or :eq(1) on paragraphs within the container
+    $('#container p:nth-child(2)').css('font-weight', 'bold');
+    // Alternatively: $('#container p').eq(1).css('font-weight', 'bold');
+
+    // 4. Select all list items and add a border
+    $('#container li').css('border', '1px solid black');
+
+    // 5. Select the username input and change its value
+    $('input[name="username"]').val('Guest');
+});</code></pre><p>This activity demonstrates the fundamental power of jQuery selectors in targeting and preparing elements for manipulation.</p> -->
+

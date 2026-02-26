@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form action="">
+        <label for="username"> UserName: </label>
+        <input type="text" placeholder="Name" id="username-input">
+        <br>
+        <span id="username-feedback">Enter your username.</span>
+        <br>
+        <button id="submit-btn">Submit</button>
+        <div id="message-area"></div>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            $('#username-input').focus(function(event) {
+                $(event.target).css('background-color', 'yellow');
+                $(event.target).on('input', function() {
+                    var len = $(event.target).val().length;
+                    $('#username-feedback').text('Length: ' + len);
+                });
+            });
+
+            $('#username-input').blur(function(event) {
+                $(event.target).css('background-color', 'white');
+                var len = $(event.target).val().length;
+                if(len === 0) {
+                    $('#username-feedback').text('Enter your username.');
+                }
+            });
+            $('#submit-btn').click(function(event) {
+                event.preventDefault();
+
+                $('#message-area').text('Form submitted successfully!');
+            });
+        });
+    </script>
+</body>
+</html>
