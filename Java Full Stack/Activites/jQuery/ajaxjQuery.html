@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <ul id="users-list">User List</ul>
+    <button id="load-user-btn">Load User</button>
+
+    <div id="loading-indicator" hidden>Loading Users...</div>
+
+<script>
+        $(document).ready(function() {
+            $('#load-user-btn').click(function() {
+                $('#loading-indicator').show();
+                setTimeout(function() {
+                    var array = [{id : 1, name : 'A'}, {id : 2, name : 'B'}, {id : 3, name : 'C'}];
+                    $('load-user-btn').hide();
+
+                    if(array && array.length > 0) {
+                        $.each(array, function(index, user) {
+                            $('#users-list').append('<br>' + index + ' ' + user.name + '');
+                        });
+                    }
+                    else {
+                        $('users-list').append('No users found.');
+                    }
+                }, 1000);
+            })
+
+        });
+    </script>
+</body>
+</html>
